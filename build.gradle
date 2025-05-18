@@ -1,0 +1,42 @@
+plugins {
+    id("java")
+    id("org.springframework.boot") version "3.4.5"
+    id("io.spring.dependency-management") version "1.1.7"
+}
+
+springBoot {
+    buildInfo()
+}
+
+group = 'com.hyperoptic'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    mapstructVersion = '1.6.3'
+    pgDriverVersion = '42.7.5'
+    webMvcUiVersion = '2.8.8'
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.postgresql:postgresql:${pgDriverVersion}")
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${webMvcUiVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.mockito:mockito-core")
+    testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("com.h2database:h2")
+}
+
+test {
+    useJUnitPlatform()
+}
