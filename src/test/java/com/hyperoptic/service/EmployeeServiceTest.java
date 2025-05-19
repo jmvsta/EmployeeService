@@ -117,7 +117,7 @@ class EmployeeServiceTest {
         List<Employee> leads = List.of(lead1, lead2);
         List<EmployeeDto> dtos = List.of(new EmployeeDto(lead1.getId(), lead1.getName(), lead1.getTeam().getName(), lead1.getTeam().getTeamLead().getName()),
                 new EmployeeDto(lead2.getId(), lead2.getName(), lead2.getTeam().getName(), lead2.getTeam().getTeamLead().getName()));
-        Mockito.when(employeeRepository.findAllTeamLeads(anyString(), anyString())).thenReturn(leads);
+        Mockito.when(employeeRepository.findAllTeamLeads(any(), any())).thenReturn(leads);
         Mockito.when(employeeMapper.toDtoList(any(Iterable.class))).thenReturn(dtos);
 
         var filter = new FilterDto();
@@ -125,8 +125,8 @@ class EmployeeServiceTest {
         var resultDtos = service.findEmployees(filter);
 
         assertThat(resultDtos, containsInAnyOrder(dtos.toArray(new EmployeeDto[]{})));
-        verify(employeeRepository, times(1)).findAllTeamLeads(anyString(), anyString());
-        verify(employeeMapper, times(1)).toDtoList(new ArrayList<>());
+        verify(employeeRepository, times(1)).findAllTeamLeads(any(), any());
+        verify(employeeMapper, times(1)).toDtoList(any(Iterable.class));
     }
 
     @Test

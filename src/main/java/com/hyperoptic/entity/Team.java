@@ -1,5 +1,6 @@
 package com.hyperoptic.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +27,7 @@ public class Team {
     private Long id;
 
     @NotBlank
+    @Column(unique = true)
     private String name;
 
     @OneToOne(fetch = FetchType.LAZY)

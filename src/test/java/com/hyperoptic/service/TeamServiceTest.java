@@ -2,13 +2,10 @@ package com.hyperoptic.service;
 
 import com.hyperoptic.config.MockConfig;
 import com.hyperoptic.dto.TeamDto;
-import com.hyperoptic.dto.FilterDto;
 import com.hyperoptic.entity.Employee;
-import com.hyperoptic.entity.Team;
 import com.hyperoptic.entity.Team;
 import com.hyperoptic.mapper.TeamMapper;
 import com.hyperoptic.repository.EmployeeRepository;
-import com.hyperoptic.repository.TeamRepository;
 import com.hyperoptic.repository.TeamRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeAll;
@@ -23,12 +20,9 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

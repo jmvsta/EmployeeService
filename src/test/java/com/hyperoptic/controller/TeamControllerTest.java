@@ -6,7 +6,6 @@ import com.hyperoptic.config.MockConfig;
 import com.hyperoptic.configuration.GlobalExceptionHandler;
 import com.hyperoptic.dto.TeamDto;
 import com.hyperoptic.dto.ErrorDto;
-import com.hyperoptic.dto.FilterDto;
 import com.hyperoptic.service.TeamService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.DisplayName;

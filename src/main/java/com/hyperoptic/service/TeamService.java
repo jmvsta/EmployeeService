@@ -69,6 +69,9 @@ public class TeamService {
 
     @Transactional
     public void removeTeam(Long id) {
+        if (employeeRepository.existsEmployeeByTeam_Id(id)) {
+            throw new IllegalStateException("Cannot delete team with assigned employees");
+        }
         teamRepository.deleteById(id);
     }
 }
