@@ -1,6 +1,34 @@
 # EmployeeService
 This service enables CRUD operations over REST for Employee entities
 
+## Running tests
+
+```
+.\gradlew test
+```
+
+## Building jar
+
+```
+.\gradlew clean build
+```
+
+## Deploying docker
+
+```
+docker-compose up --build
+```
+
+## Environment Variables
+
+Create a `.env` file in main directory with the following variables:
+
+SECURITY_USER=secure_user
+SECURITY_PASSWORD=secure_password
+DB_URL=jdbc:postgresql://db:5432/prod_db?currentSchema=employee_prod
+DB_USER=secure_db_user
+DATASOURCE_PASSWORD=secure_db_password
+
 ## Endpoints 
 
 ### Health Check

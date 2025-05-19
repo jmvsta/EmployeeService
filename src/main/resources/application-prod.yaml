@@ -1,10 +1,10 @@
 spring:
   security:
     user:
-      name: ${SECURITY_USER_PROD}
-      password: ${SECURITY_PASSWORD_PROD}
+      name: ${SECURITY_USER}
+      password: ${SECURITY_PASSWORD}
   datasource:
-    url: ${DB_URL_PROD}
+    url: ${DB_URL}
     username: ${DB_USER_PROD}
     password: ${DB_PASSWORD_PROD}
     driver-class-name: org.postgresql.Driver
