@@ -49,4 +49,6 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
             @Param("teamLeadName") String teamLeadName,
             @Param("teamLeadId") Long teamLeadId
     );
+
+    boolean existsEmployeeByTeam_Id(Long teamId);
 }

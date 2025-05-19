@@ -2,6 +2,7 @@ package com.hyperoptic.configuration;
 
 import com.hyperoptic.dto.ErrorDto;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +53,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({
             IllegalArgumentException.class,
-            MethodArgumentNotValidException.class
+            MethodArgumentNotValidException.class,
+            DataIntegrityViolationException.class
     })
     public ResponseEntity<ErrorDto> handleBadRequest(Exception exception, HttpServletRequest request) {
         var error = new ErrorDto(
@@ -62,6 +64,9 @@ public class GlobalExceptionHandler {
                 exception.getMessage(),
                 URI.create(request.getRequestURI()).toString()
         );
+        if (exception instanceof DataIntegrityViolationException) {
+            error.setDetail("DB Constraint Violation");
+        }
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_PROBLEM_JSON)
